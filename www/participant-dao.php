@@ -56,7 +56,7 @@ class ParticipantDao {
     }
 
 
-    function createParticipant($id_horaire, $id_activite, $nom, $prenom, $mail, $telephone) {
+    function createParticipant($id_horaire, $id_activite, $nom, $prenom, $email, $telephone) {
       // formate le nom / prénom
       $nom = strtoupper($nom);
       $prenom = ucwords(strtolower($prenom));
