@@ -1,0 +1,25 @@
+version: '2'
+services:
+  db:
+    image: mysql:5.5
+    container_name: db
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+    volumes:
+      - ./mysqldata:/var/lib/mysql
+    ports:
+      - 3306:3306
+    networks:
+      - mapnet
+  site:
+    image: dupontf/php:7.2-apache
+    container_name: site
+    volumes:
+      - ./www:/var/www/html
+    ports:
+      - 80:80
+    networks:
+      - mapnet
+
+networks:
+  mapnet:

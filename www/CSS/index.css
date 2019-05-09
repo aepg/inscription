@@ -1,0 +1,269 @@
+@import url(https://fonts.googleapis.com/css?family=Fira+Sans:400,500,400italic,700,700italic|Caveat+Brush);
+
+
+
+body{
+    margin: 0;
+    font-size: 20px;
+    background-color: rgb(55, 152, 212);
+}
+
+h1 {
+  font-size: 40px;
+  font-family: "Fira Sans", "Trebuchet MS", "Helvetica Neue", "Arial", sans-serif;
+  font-style: italic;
+  text-align: center;
+  color: #fff;
+}
+
+h2 {
+    font-size: 28px;
+    font-family: "Fira Sans", "Trebuchet MS", "Helvetica Neue", "Arial", sans-serif;
+    font-style: normal;
+    text-align: center;
+    line-height: 1.5;
+    font-weight: normal;
+    color: #fff;
+}
+
+a {
+    color: rgb(55, 152, 212);
+}
+
+#entete-area {
+    background-color:rgb(55, 152, 212);
+}
+
+#title-area {
+    padding-top : 64px;
+    background-color:rgb(55, 152, 212);
+    padding-bottom: 32px;
+}
+
+#table-area {
+    margin-left:20px;
+    margin-right: 20px;
+    background-color: rgb(250, 247, 245);
+    border-bottom-color: rgb(67, 78, 87);
+    border-radius: 6px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 0px 0px;
+    color: rgb(67, 78, 87);
+    font-family: "Fira Sans", "Trebuchet MS", "Helvetica Neue", "Arial", sans-serif;
+    padding-left: 32px;
+    padding-right: 32px; 
+    padding-bottom:32px;
+}
+
+.subscription-table {
+    border-width: 1px;
+    border-style: solid;
+    border-color:rgb(212, 218, 222);
+    background-color: #fff;
+    border-collapse: collapse;
+}
+
+
+.subscription-table > tbody > tr {
+    width:75px;
+}
+
+.subscription-table > tbody > tr > th {
+    border-width: 1px;
+    border-style: solid;
+    border-color:rgb(212, 218, 222);
+    background-color: #fff;   
+    line-height: 20px;
+    font-size:20px;
+    font-weight: normal;
+    padding-top:5px;
+    padding-bottom:10px;
+    width:150px;
+}
+
+.subscription-table > tbody > tr > td {
+    border-width: 1px;
+    border-style: solid;
+    border-color:rgb(212, 218, 222);
+    padding-left : 2px;
+}
+
+/* liens d'inscription */
+.subscription-table > tbody > tr > td > a {
+    color: rgb(67, 78, 87);
+    font-family: "Fira Sans", "Trebuchet MS", "Helvetica Neue", "Arial", sans-serif;
+    font-weight: bold;
+    line-height: 1.2rem;
+    text-align:center;
+    padding-left: 10px;
+}
+
+
+#footer {
+    padding: 32px;
+    font-family: "Fira Sans", "Trebuchet MS", "Helvetica Neue", "Arial", sans-serif;
+    color: #fff;
+    font-size: 16px;
+    text-align: center;
+}
+
+td.vide{
+    background-color: rgb(250,250,250);
+}
+
+td.inscrit {
+    color: rgb(67, 78, 87);
+    font-size: 16px;
+    vertical-align: top;
+
+    max-width: 100px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    
+    padding-top:4px;
+    padding-bottom: 10px;
+    line-height: 1.1;
+}
+
+.complet {
+    background-color: rgb(205, 234, 161);
+}
+
+.incomplet {
+    background-color: rgb(252, 237, 233);
+}
+
+.person {
+    line-height: 1.1rem;
+    text-overflow: ellipsis;
+    margin-right: 5px; 
+}
+
+.disclaimer {
+    text-align: center;
+    padding-top: 20px;
+    padding-bottom: 32px;
+}
+
+/* HEADERS de tableaux */
+.day {
+    color: rgb(93, 110, 121);
+    font-size: 18px;
+}
+
+.dayno {
+    color: rgb(40, 47, 52);
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.timelap {
+    color: rgb(93, 110, 121);
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.activite {
+    color: rgb(93, 110, 121);
+    font-size: 18px;
+}
+
+
+.formulaire-inscription-area {
+    margin-left:20px;
+    margin-right: 20px;
+    
+    background-color: rgb(250, 247, 245);
+    border-bottom-color: rgb(67, 78, 87);
+    border-radius: 6px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 0px 0px;
+    color: rgb(67, 78, 87);
+    font-family: "Fira Sans", "Trebuchet MS", "Helvetica Neue", "Arial", sans-serif;
+    padding-left: 32px;
+    padding-right: 32px; 
+    padding-bottom:32px;
+    padding-top:32px;
+   text-align: center;
+}
+
+.formulaire-inscription-area > h2 {
+    color: rgb(67, 78, 87);
+}
+
+.formulaire-inscription {
+    
+    text-align: center;
+    width:100%;
+    text-align:center;
+    width: 500px;
+    
+}
+
+.formulaire-inscription > tbody > th > td {
+    padding-bottom: 20px;
+
+}
+
+.cell-label-formulaire {
+    text-align:right;
+    font-weight: bold;
+    padding-right:20px;
+ 
+    vertical-align: bottom;
+}
+
+.cell-content-formulaire {
+    text-align:left;
+    vertical-align: bottom;
+}
+
+input {
+    font-size: 20px;
+    border: 1px solid  rgb(212, 218, 222);
+    line-height: 2rem;
+    padding-left:5px;
+    width:100%;
+}
+
+input[type=button], input[type=submit], input[type=reset] {
+ 
+    text-decoration: none;
+    margin: 4px 2px;
+    cursor: pointer;
+
+    height: 40px;
+    width: 200px;
+    text-align: center;
+    background-color: rgb(205, 234, 161);
+    border-radius: 6px;
+    border-bottom-color: rgb(67, 78, 87);
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 0px 0px;
+    color: rgb(67, 78, 87);
+    font-weight: bold;
+    margin-top:32px;
+   
+  }
+
+input[type=reset] {
+ 
+    text-decoration: none;
+    margin: 4px 2px;
+    cursor: pointer;
+
+    height: 40px;
+    width: 200px;
+    text-align: center;
+    background-color: rgb(250, 247, 245);
+    border-radius: 6px;
+    border-bottom-color: rgb(67, 78, 87);
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 0px 0px;
+    color: rgb(67, 78, 87);
+    font-weight: normal;
+    margin-right: 20px;
+  }
+
+  .erreur {
+      color:red;
+      font-weight: bold;
+      
+  }
