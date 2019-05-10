@@ -67,13 +67,66 @@ if($mode_enregistrement) {
           
     //enregistrement si pas d'erreur
     if(empty($erreurs)){
+
+      // TODO : l'UUID pourrait être utilisé en tant qu'identifiant unique de désinscription
+      // il est envoyé par mail au moment de l'inscription et permet à chacun de se désinscrire tout seul.
+      // a coder !
+      $uuid = getToken(8);
+
       $participantDao->createParticipant($id_horaire, $id_activite, $nom, $prenom, $mail, $telephone);
+
+      if(!empty($_POST["mail"])) {
+
+        // on envoie un petit mail
+        $to = $_POST["mail"];
+        $subject = "Inscription AEPG";
+
+        $message = "<h2>Votre inscription a bien été prise en compte.</h2>";
+        $message .= "<h3>";
+        $message .= "Vous êtes inscrit à l'activité " . $selected_activite["libelle"];
+        $message .= " le " .$selected_horaire["libelle_jour"] . " " . $selected_horaire["numero_jour"];
+        $message .= " sur le créneau " . $selected_horaire["libelle_intervalle"]  . ".";
+        $message .= " </h3>";
+        $message .= "<p> Si vous souhaitez vous désinscrire, contacter l'association par e-mail aepg.association@gmail.com.</p>";
+
+
+        $message .= "<br/><br/> Merci de votre aide!";
+        $message .= "<br/><br/> L'équipe AEPG";
+
+        $header = "From:aepg.association@aepg.fr \r\n";
+        $header .= "MIME-Version: 1.0\r\n";
+        $header .= "Content-type: text/html\r\n";
+
+        $retval = mail ($to,$subject,$message,$header);
+
+        if( $retval == true ) {
+          error_log("Message sent successfully...", 0);
+        }else {
+          error_log( "Message could not be sent...", 0);
+        }
+      }
+      
 
       header('Location: inscription-reussie.php'); 
 
     }
       
   } 
+
+  // fonction de création de token aléatoire
+  function getToken($length){
+    $token = "";
+    $codeAlphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    $codeAlphabet.= "abcdefghijklmnopqrstuvwxyz";
+    $codeAlphabet.= "0123456789";
+    $max = strlen($codeAlphabet); // edited
+  
+   for ($i=0; $i < $length; $i++) {
+       $token .= $codeAlphabet[random_int(0, $max-1)];
+   }
+  
+   return $token;
+  }
 
 ?><!doctype html>
 <html lang="fr">

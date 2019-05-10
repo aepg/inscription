@@ -74,7 +74,8 @@ foreach($creneaux as $creneau) {
 	<div class="py-5 text-center">
 	  <img src="logo.png" class="img-fluid mx-auto d-block" alt="Responsive image" width="200">
 	  <h2>Inscription aux activités de la fête des écoles</h2>
-	  <p class="lead">Aidez l'AEPG à participer aux activités et stands !</i></p>
+	  <p class="lead">Aidez l'AEPG à participer aux activités et stands !</p>
+		<p>Vous souhaitez vous désinscrire? Contactez l'<a href="mailto:aepg.association@gmail.com">AEPG par mail</a>.</p>
 	</div>
   
 	<?php
