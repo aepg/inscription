@@ -26,9 +26,6 @@ class MySql {
 
   
 
-  
-
-
 
   /* CONVENIENT MeTHoDs*/
   

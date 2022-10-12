@@ -22,9 +22,14 @@
         <h2>
           <a href="participants-read.php">Info des Participants</a>
         </h2>
-        <br/>
+        <h2>
+          <a href="participants-tableur.php">Info des Participants (Tableur)</a>
+        </h2>
         <br/>
 
+        <h2>
+          <a href="parametres.php?id=1">Paramètres Généraux</a>
+        </h2>
         <h2>
           <a href="activites.php">Gestion des Activités</a>
         </h2>

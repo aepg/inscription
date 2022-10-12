@@ -25,17 +25,20 @@ include_once 'activite-dao.php';
 include_once 'horaire-dao.php';
 include_once 'creneau-dao.php';
 include_once 'participant-dao.php';
+include_once 'parametre-dao.php';
 
 $mysql = new MySql();
 $activiteDao = new ActiviteDao($mysql); 
 $horaireDao = new HoraireDao($mysql);
 $creneauDao = new CreneauDao($mysql);
 $participantDao = new ParticipantDao($mysql);
+$parametreDao = new ParametreDao($mysql);
 
 $activites = $activiteDao->findAllActivites();
 $horaires = $horaireDao->findAllHoraires();
 $participants = $participantDao->findAllParticipants();
 $creneaux = $creneauDao->findAllCreneaux();
+$parametre = $parametreDao->findParametreById(1);
 
 // j'indexe les participants dans un tableau a 2 dimensions [activite][horaire]
 // je réduit ainsi le nombre de requetes.
@@ -73,8 +76,8 @@ foreach($creneaux as $creneau) {
      
 	<div class="py-5 text-center">
 	  <img src="logo.png" class="img-fluid mx-auto d-block" alt="Responsive image" width="200">
-	  <h2>Inscription aux activités de la fête des écoles</h2>
-	  <p class="lead">Aidez l'AEPG à participer aux activités et stands !</p>
+	  <h2><?php echo $parametre["titre"] ?></h2>
+	  <p class="lead"><?php echo $parametre["sous_titre"] ?></p>
 		<p>Vous souhaitez vous désinscrire? Contactez l'<a href="mailto:aepg.association@gmail.com">AEPG par mail</a>.</p>
 	</div>
   
@@ -144,11 +147,25 @@ foreach($creneaux as $creneau) {
 							echo "<td>";
 						}				
 						
-						foreach($array_part as $cur_part) {
+						if($parametre["mode_anonyme"] == 0) {
+							foreach($array_part as $cur_part) {
+								echo "<div class=\"text-nowrap participant\">";
+								echo $cur_part["prenom"] . " " . $cur_part["nom"] . "";
+								echo "</div>";
+							}
+						} else {
 							echo "<div class=\"text-nowrap participant\">";
-							echo $cur_part["prenom"] . " " . $cur_part["nom"] . "";
+							if(count($array_part) == 1) {
+								echo "1 inscrit";	
+							} else {
+								echo "".count($array_part)." inscrits";
+							}
 							echo "</div>";
 						}
+
+
+
+						
 						if(count($array_part) < $nombre_max) {
 							echo "<div class=\"text-nowrap participant\">";
 							echo "<span class=\"badge badge-light\">+" . ( $nombre_max - count($array_part)) . " dispo </span>";

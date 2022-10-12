@@ -45,3 +45,12 @@ Pour stopper:
 ```
 docker-compose down
 ```
+
+
+
+## 
+Titre par défaut : 
+
+Inscription aux activités de la fête des écoles
+Sous-titre par défaut : 
+Aidez l'AEPG en participant aux activités et stands !

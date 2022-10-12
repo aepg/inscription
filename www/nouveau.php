@@ -18,12 +18,14 @@ include_once './mysql.php';
 include_once './activite-dao.php';
 include_once './horaire-dao.php';
 include_once './participant-dao.php';
+include_once './parametre-dao.php';
 
 $mysql = new MySql();
 
 $horaireDao = new HoraireDao($mysql);
 $activiteDao = new ActiviteDao($mysql);
 $participantDao = new ParticipantDao($mysql);
+$parametreDao = new ParametreDao($mysql);
 
 // si on est en mode ENREGISTREMENT ou CREATION
 $mode_enregistrement = isset($_POST["action"]) && $_POST["action"] == "ajouter";
@@ -38,6 +40,7 @@ if($mode_enregistrement) {
 
 $selected_horaire = $horaireDao->findHoraireById($id_horaire);
 $selected_activite = $activiteDao->findActiviteById($id_activite);
+$parametre = $parametreDao->findParametreById(1);
 
 // si on est en mode ENREGISTREMENT
 if($mode_enregistrement) {
@@ -55,12 +58,21 @@ if($mode_enregistrement) {
         $prenom = $_POST["prenom"];
     }
 
+
+    if($parametre["email_obligatoire"] == 1 && (!isset($_POST["mail"]) || empty($_POST["mail"]) )) {
+      array_push($erreurs, "L'e-mail est obligatoire");
+    }
+
     if(isset($_POST["mail"]) && !empty($_POST["mail"]) && !filter_var($_POST["mail"], FILTER_VALIDATE_EMAIL)) {
         array_push($erreurs, "Le mail n'est pas valide");
     } else {
         $mail=$_POST["mail"];
     }
       
+    if($parametre["tel_obligatoire"] == 1 && (!isset($_POST["telephone"]) || empty($_POST["telephone"])  )) {
+      array_push($erreurs, "Le téléphone est obligatoire");
+    }
+
     if(isset($_POST["telephone"])) {
         $telephone = $_POST["telephone"];
     }
@@ -181,8 +193,14 @@ if($mode_enregistrement) {
       <div class="col-md-2"> </div>
       <div class="col-md-8">
 
+        <?php if($parametre["mode_anonyme"] == 1) { ?>
+            <div class="alert alert-success" role="alert">
+             <b>A SAVOIR :</b> Vos coordonnées ne seront visibles que pour les organisateurs, et ne seront pas visibles des autres participants.
+            </div>
+         <?php } ?>
+
         <h4 class="mb-3">Nouvelle inscription</h4>
-        
+        <p><small class="text-muted">Les champs marqués par une astérisque <b>*</b> sont obligatoires.</small></p>
        
         <div class="mb-3">
           <div class="input-group mb-3">
@@ -205,7 +223,7 @@ if($mode_enregistrement) {
         <div class="mb-3">
           <div class="input-group mb-3">
             <div class="input-group-prepend">
-              <span class="input-group-text" id="basic-addon1">@ E-mail</span>
+              <span class="input-group-text" id="basic-addon1">@ E-mail <?php if($parametre["email_obligatoire"]) echo "*"?></span>
             </div>
             <input type="text" name="mail" class="form-control" placeholder="votre@adresse.com" value="<?php echo $mail; ?>">
           </div>
@@ -214,7 +232,7 @@ if($mode_enregistrement) {
         <div class="mb-3">
            <div class="input-group mb-3">
             <div class="input-group-prepend">
-              <span class="input-group-text" id="basic-addon1">&#9990; Téléphone</span>
+              <span class="input-group-text" id="basic-addon1">&#9990; Téléphone <?php if($parametre["tel_obligatoire"]) echo "*"?></span>
             </div>
             <input type="text" name="telephone" class="form-control" placeholder="06-12-34-56-78" value="<?php echo $telephone; ?>">
           </div>

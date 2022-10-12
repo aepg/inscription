@@ -75,7 +75,7 @@ foreach($creneaux as $creneau) {
 	<div class="py-5 text-center">
 	  <img src="logo.png" class="img-fluid mx-auto d-block" alt="Responsive image" width="200">
 	  <h2>Informations des participants</h2>
-	  <p class="lead">Depuis cette, vous visualiser les participants</i></p>
+	  <p class="lead">Depuis cette page, vous visualiser les participants</i></p>
     <a class="btn btn-outline-secondary" href="admin.php" role="button">&larrhk; Retour à l'Admin</a>
    
 	</div>

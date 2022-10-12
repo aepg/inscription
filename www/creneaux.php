@@ -164,7 +164,7 @@ foreach($creneaux as $creneau) {
                                          
 
                                          //echo "<option >3</option>";
-                                         for( $i = 1; $i<=12; $i++ ) {
+                                         for( $i = 1; $i<=20; $i++ ) {
                                            if($nombre_participants == $i) {
                                                 echo "<option selected=\"selected\" value=\"" . $i . "\">". $i ."</option>";
                                            } else {

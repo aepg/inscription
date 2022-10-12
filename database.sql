@@ -41,3 +41,17 @@ CREATE TABLE participant (
   FOREIGN KEY (id_horaire) REFERENCES horaire(id),
   FOREIGN KEY (id_activite) REFERENCES activite(id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8
+
+
+CREATE TABLE `parametre` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `titre` varchar(100) NOT NULL DEFAULT 'N/A',
+  `sous_titre` varchar(255) NOT NULL DEFAULT 'N/A',
+  `email_obligatoire` tinyint NOT NULL DEFAULT '0',
+  `tel_obligatoire` tinyint NOT NULL DEFAULT '0',
+  `mode_anonyme` tinyint NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+INSERT INTO parametre (titre,sous_titre,email_obligatoire,tel_obligatoire,mode_anonyme) VALUES ('Inscription aux activités de l''AEPG','Activité Photos Vide Ta Chambre',1,1,1);
